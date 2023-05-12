@@ -1,20 +1,19 @@
 const locationForm = document.querySelector('#location-form');
+const apiKey = '92f4af4d809cd7f72786b822dd641409';
 
 locationForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  // Get the location input value
+  // Get the location by input value
   const location = document.querySelector('#location-input').value;
-
   // Call the getWeather function with the location as the parameter
   const weather = await getWeather(location);
-
   // Update the UI with the weather data
   updateUI(weather);
 });
 
+// getting weather data from api
 async function getWeather(location) {
-  const apiKey = '92f4af4d809cd7f72786b822dd641409';
   const geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${apiKey}`;
   const geocodingResponse = await fetch(geocodingUrl);
   const geocodingData = await geocodingResponse.json();
@@ -25,7 +24,20 @@ async function getWeather(location) {
   return await weatherResponse.json();
 }
 
+//getting location from the browser
+navigator.geolocation.getCurrentPosition((position) => {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
 
+  //calling the getWeather function with the coordinates
+  const weather = getWeather(latitude, longitude);
+
+  //update the ui with the data
+  updateUI(weather);
+}, (error) => {
+  // handle any error
+  console.error(error);
+});
 
 function updateUI(weather) {
   const temperature = weather.main.temp; // Define temperature variable using the weather data
