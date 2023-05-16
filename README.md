@@ -6,7 +6,7 @@ This is a simple weather app that allows users to enter a location and retrieve 
 
 ## Installation
 
-To use the app, you will need to obtain an API key from OpenWeatherMap. Once you have your API key, create a file called `config.js` in the root directory of the project and add the following line, replacing `<YOUR_API_KEY>` with your actual API key:
+To use the app, you will need to obtain an API key from OpenWeatherMap. Once you have your API key, update it on the whether.js file
 
 
 Then, open the `weather.html` file in your web browser to launch the app.
