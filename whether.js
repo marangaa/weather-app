@@ -1,5 +1,5 @@
 const locationForm = document.querySelector('#location-form');
-const apiKey = '92f4af4d809cd7f72786b822dd641409';
+const apiKey = 'put your api key here';
 
 locationForm.addEventListener('submit', async (e) => {
   e.preventDefault();
